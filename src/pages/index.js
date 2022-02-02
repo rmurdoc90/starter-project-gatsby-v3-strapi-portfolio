@@ -10,6 +10,8 @@ const IndexPage = () => {
     <>
       <main>
         <Hero />
+        <Services />
+        <Jobs />
       </main>
     </>
   )

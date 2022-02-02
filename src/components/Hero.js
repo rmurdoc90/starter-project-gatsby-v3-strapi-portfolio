@@ -11,7 +11,7 @@ const Hero = () => {
         <article className="hero-info">
           <div>
             <div className="underline"></div>
-            <h1>Im John</h1>
+            <h1>Im Rob</h1>
             <h4>Freelance web develeoper</h4>
             <Link to="/contact" className="btn">
               contact me
@@ -28,7 +28,7 @@ const Hero = () => {
           </div>
         </article>
         <StaticImage
-          src="../assets/images/hero.svg"
+          src="../assets/images/Header img.svg"
           alt="portfolio"
           className="hero-img"
           placeholder="blurred"
