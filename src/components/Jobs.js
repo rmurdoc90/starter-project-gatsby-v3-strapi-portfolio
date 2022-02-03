@@ -13,6 +13,10 @@ const query = graphql`
             position
             company
             date
+            desc {
+              id
+              name
+            }
           }
         }
       }
@@ -26,8 +30,8 @@ const Jobs = () => {
     allStrapiJob: { nodes: jobs },
   } = data
   const [value, setValue] = React.useState(0)
-  const { company, position, date } = jobs[0].data[value].attributes
-
+  const { company, position, date, desc } = jobs[0].data[value].attributes
+  console.log(jobs[0].data[value].attributes)
   return (
     <section className="section jobs">
       <Title title="experience" />
@@ -51,14 +55,14 @@ const Jobs = () => {
           <h3>{position}</h3>
           <h4>{company}</h4>
           <p className="job-date">{date}</p>
-          {/*description.map(item => {
+          {desc.map(item => {
             return (
               <div key={item.id} className="job-description">
                 <FaAngleDoubleRight className="job-icon"></FaAngleDoubleRight>
                 <p>{item.name}</p>
               </div>
             )
-          })*/}
+          })}
         </article>
       </div>
 
