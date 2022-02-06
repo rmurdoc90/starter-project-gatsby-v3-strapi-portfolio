@@ -4,26 +4,27 @@ import Project from "./Project"
 import { Link } from "gatsby"
 
 const Projects = ({ projects, title, showLink, images }) => {
-  // const newProjects = projects[0].data[0].attributes
-  // const item = [...images, newProjects]
-  // const newArr = []
-  for (var i = 0; i < projects[0].data.length; i++) {
-    const newArr = []
-    const newProjects = projects[0].data[i].attributes
-    const newItem = { ...newProjects, ...images[i] }
-    newArr.push(newItem)
-    console.log(newArr)
-  }
+  const newArr = [] //declaring array for function in next line
 
-  console.log(projects[0].data)
+  function newItems(arr) {
+    //this function is used to combine both images and
+    //project objects to be passed to Project component
+    for (var i = 0; i < projects[0].data.length; i++) {
+      const newProjects = projects[0].data[i].attributes
+      const newItem = { ...newProjects, ...images[i] }
+      arr.push(newItem)
+    }
+    return arr
+  }
+  newItems(newArr)
+  console.log(newArr)
+
   return (
     <section className="section projects">
       <Title title={title} />
       <div className="section-center project-center">
-        {projects[0].data.map((project, index) => {
-          return (
-            <Project key={project.attributes.ID} index={index} {...project} />
-          )
+        {newArr.map((project, index) => {
+          return <Project key={project.ID} index={index} {...project} />
         })}
       </div>
       {showLink && (
