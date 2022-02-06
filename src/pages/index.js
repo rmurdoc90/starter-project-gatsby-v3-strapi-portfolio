@@ -7,14 +7,26 @@ import Projects from "../components/Projects"
 import Seo from "../components/Seo"
 
 const IndexPage = ({ data }) => {
+  const {
+    allStrapiProject: { nodes: projects },
+  } = data
+  const {
+    allImageSharp: { nodes: images },
+  } = data
   console.log(data)
+  console.log(projects)
   return (
     <>
       <main>
         <Hero />
         <Services />
         <Jobs />
-        <Projects title="featured project" showLinks projects />
+        <Projects
+          title="featured project"
+          showLinks
+          projects={projects}
+          images={images}
+        />
       </main>
     </>
   )
@@ -40,6 +52,7 @@ export const query = graphql`
               id
               title
             }
+            ID
           }
         }
       }
