@@ -3,12 +3,12 @@ import Title from "./Title"
 import Project from "./Project"
 import { Link } from "gatsby"
 
-const Projects = ({ projects }) => {
+const Projects = ({ projects, title }) => {
   // console.log(projects)
 
   return (
     <section className="section projects">
-      <Title title={projects.title} />
+      <Title title={title} />
       <div className="section-center project-center">
         {projects.map((project, index) => {
           return <Project key={project.ID} index={index} {...project} />
