@@ -3,16 +3,19 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { FaGithubSquare, FaShareSquare } from "react-icons/fa"
 import { Link } from "gatsby"
 
-const Project = ({
-  description,
-  title,
-  github,
-  stack,
-  url,
-  gatsbyImageData,
-  index,
-  slug,
-}) => {
+const Project = project => {
+  const {
+    description,
+    title,
+    github,
+    stack,
+    url,
+    gatsbyImageData,
+    index,
+    slug,
+  } = project
+  console.log(stack)
+
   return (
     <article className="project">
       <GatsbyImage

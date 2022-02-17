@@ -7,26 +7,31 @@ import Projects from "../components/Projects"
 import Seo from "../components/Seo"
 
 const IndexPage = ({ data }) => {
-  const {
-    allStrapiProject: { nodes: projects },
-  } = data
-  const {
-    allImageSharp: { nodes: images },
-  } = data
-  console.log(data)
-  console.log(projects)
+  const projects = data.allStrapiProject.nodes[0].data
+  const images = data.allImageSharp.nodes
+  const newArr = []
+  //declaring array variables for function in next line
+
+  function newItems(arr) {
+    //this function is used to combine both images and
+    //project objects to be passed to Project component
+    for (var i = 0; i < projects.length; i++) {
+      const newProjects = projects[i].attributes
+      const newItem = { ...newProjects, ...images[i] }
+      arr.push(newItem)
+    }
+    return arr
+  }
+  newItems(newArr)
+  // console.log(newArr)
+
   return (
     <>
       <main>
         <Hero />
         <Services />
         <Jobs />
-        <Projects
-          title="featured project"
-          showLinks
-          projects={projects}
-          images={images}
-        />
+        <Projects title="featured project" showLinks projects={newArr} />
       </main>
     </>
   )
